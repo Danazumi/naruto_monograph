@@ -1,5 +1,6 @@
 import { NavItem } from "@/types/nav"
 
+// An interface being defined
 interface SiteConfig {
   name: string
   description: string
@@ -12,7 +13,7 @@ interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "Next.js",
+  name: "naruto monograph",
   description:
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
   mainNav: [

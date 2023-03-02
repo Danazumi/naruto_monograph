@@ -15,8 +15,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+// defines the shape of the props that the MainNav component can accept, and ensures that these props are properly typed and checked during development.
 interface MainNavProps {
-  items?: NavItem[]
+   items?: NavItem[]   //items is an optional array of NavItem.
 }
 
 export function MainNav({ items }: MainNavProps) {
@@ -28,6 +29,7 @@ export function MainNav({ items }: MainNavProps) {
           {siteConfig.name}
         </span>
       </Link>
+
       {items?.length ? (
         <nav className="hidden gap-6 md:flex">
           {items?.map(
