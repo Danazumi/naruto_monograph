@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # next-template
 
 A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
@@ -10,7 +9,7 @@ A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
 - Fonts with `@next/font`
 - Icons from [Lucide](https://lucide.dev)
 - Dark mode with `next-themes`
-- Automatic import sorting with `@ianvs/prettier-plugin-sort-imports`
+- Automatic import sorting with `@ianvs/gitprettier-plugin-sort-imports`
 
 ## Tailwind CSS Features
 
@@ -77,6 +76,3 @@ cn("px-2 bg-slate-100 py-2 bg-slate-200")
 ## License
 
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
-=======
-# naruto_monograph
->>>>>>> cb86fca88a2cdb3a45f39b64235ab3d57d800e70
