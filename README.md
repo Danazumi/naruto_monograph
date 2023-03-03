@@ -1,1 +1,0 @@
-# naruto_monograph
