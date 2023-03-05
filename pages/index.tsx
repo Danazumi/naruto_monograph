@@ -29,13 +29,11 @@ export default function IndexPage() {
             built with Radix UI and Tailwind CSS.
           </h1>
           <p className="max-w-[700px] text-lg text-slate-700 dark:text-slate-400 sm:text-xl">
-            Accessible and customizable components that you can copy and paste
-            into your apps. Free. Open Source. And Next.js 13 Ready.
+            Do you want to know more about the greatest anime of all time?
+            This is the best encyclopedia you will get.
           </p>
         </div>
-        
-        <Menu/>
-        
+
       </section>
     </Layout>
   )

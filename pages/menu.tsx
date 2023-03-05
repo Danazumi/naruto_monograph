@@ -1,3 +1,4 @@
+import Link from 'next/link'
 "use client"
 import {
   Menubar,
@@ -24,12 +25,12 @@ export default function Menu() {
             <MenubarTrigger>login</MenubarTrigger>
             <MenubarContent>
             <MenubarItem>
-                Login <MenubarShortcut>⌘T</MenubarShortcut>
+                Sign In <MenubarShortcut>⌘T</MenubarShortcut>
             </MenubarItem>
             <MenubarItem>
                 Sign Up <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled>New Incognito Window</MenubarItem>
+            {/* <MenubarItem disabled>New Incognito Window</MenubarItem>
             <MenubarSeparator />
             <MenubarSub>
                 <MenubarSubTrigger>Share</MenubarSubTrigger>
@@ -42,14 +43,16 @@ export default function Menu() {
             <MenubarSeparator />
             <MenubarItem>
                 Print... <MenubarShortcut>⌘P</MenubarShortcut>
-            </MenubarItem>
+            </MenubarItem> */}
             </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
             <MenubarTrigger>search</MenubarTrigger>
             <MenubarContent>
             <MenubarItem>
-                Character <MenubarShortcut>⌘Z</MenubarShortcut>
+                <Link href = "/character">
+                 Character <MenubarShortcut>⌘Z</MenubarShortcut>
+                </Link>
             </MenubarItem>
             <MenubarItem>
                 Kage <MenubarShortcut>⇧⌘Z</MenubarShortcut>
@@ -102,7 +105,7 @@ export default function Menu() {
                 <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
                 <MenubarRadioItem value="Luis">Luis</MenubarRadioItem>
             </MenubarRadioGroup> */}
-            <MenubarSeparator />
+            {/* <MenubarSeparator /> */}
             {/* <MenubarItem inset>Edit...</MenubarItem>
             <MenubarSeparator />
             <MenubarItem inset>Add Profile...</MenubarItem> */}
