@@ -4,14 +4,20 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { Layout } from "@/components/layout"
 import { buttonVariants } from "@/components/ui/button"
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 
 import  Menu from "@/pages/menu"
 
 "use client"
  
 
+const queryClient = new QueryClient();
+
+
 export default function IndexPage() {
   return (
+    <QueryClientProvider client  = {queryClient}>
     <Layout>
       <Head>
         <title>Next.js</title>
@@ -36,5 +42,7 @@ export default function IndexPage() {
 
       </section>
     </Layout>
+
+    </QueryClientProvider>
   )
 }
