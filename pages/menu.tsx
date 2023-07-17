@@ -28,15 +28,13 @@ export default function Menu() {
             <MenubarTrigger>login</MenubarTrigger>
             <MenubarContent>
             <MenubarItem>
-                <Link href = "/sign-in">
+                <Link href = "/loginz">
                     Sign In <MenubarShortcut>⌘T</MenubarShortcut>
                 </Link>
             </MenubarItem>
-            <MenubarItem>
-                <Link href = "/sign-up">
-                Sign Up <MenubarShortcut>⌘N</MenubarShortcut>
-                </Link>
-     </MenubarItem>
+
+            
+
             </MenubarContent>
 
             

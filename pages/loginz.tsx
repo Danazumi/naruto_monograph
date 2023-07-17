@@ -42,23 +42,26 @@ const Login  = () => {
     
 
     return (
-        <form onSubmit  = {handleLogin} className="text-white">
-            <Input 
-            type = "email"
-            value = {email}
-            onChange = {(e) => setEmail(e.target.value)}
-            
-            
-            />
+        <form onSubmit  = {handleLogin} className="text-white rounded-md  w-[20rem] outline-none  max-sm:text-xs mt-12">
+             <div className="ml-8 gap-3 grid">
+                <Input 
+                type = "email"
+                value = {email}
+                onChange = {(e) => setEmail(e.target.value)}
+                className="text-black"
+                
+                />
 
-            <Input 
-                type = "password"
-                value = {password}
-                onChange = {(e) => setPassword(e.target.value)}
-            />
+                <Input 
+                    type = "password"
+                    value = {password}
+                    onChange = {(e) => setPassword(e.target.value)}
+                    className = "text-black "
+                />
 
-            <Button type = "submit"
-            >Login</Button>
+                <Button type = "submit"
+                >Login</Button>
+             </div>
 
         </form>
     )
@@ -90,29 +93,33 @@ const SignUp = () => {
     
 
     return (
-        <form onSubmit  = {handleSignUp} className="text-white">
+        <form onSubmit  = {handleSignUp} className="text-white rounded-md   outline-none w-[20rem] max-sm:text-xs pt-20">
+            <div className="ml-8 gap-3 grid">
 
             <Input 
             type = "name"
             value = {name}
             onChange = {(e) => setName(e.target.value)}
-            className = "text-black"
+            className = "text-black "
             />
 
             <Input 
             type = "email"
             value = {email}
             onChange = {(e) => setEmail(e.target.value)}
+            className = "text-black "
             />
 
             <Input 
                 type = "password"
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
+                className = "text-black "
             />
 
             <Button type = "submit"
             >Signup</Button>
+            </div>
 
         </form>
     )

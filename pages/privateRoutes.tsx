@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router'
-import { useAuth } from '@/utils/AuthContext'
 import { useEffect } from 'react'
 import {useUser} from "@/src/user"
 import Link from "next/link"

@@ -1,11 +1,12 @@
 import * as React from "react"
 import { useState } from 'react';
-import { useLazyQuery, gql } from "@apollo/client";
+// import { useLazyQuery, gql } from "@apollo/client";
 import UserDetail from '@/details/Details';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { SignOutButton } from "@clerk/nextjs";
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { useLazyQuery, gql} from '@apollo/client';
+
+
 
 const GET_CHARACTERS = gql`
   query GetCharacters($name: String!) {
@@ -47,14 +48,10 @@ export default function Character() {
   // if (loading) return <p>Loading...</p>;
   // if (error) return <p>Error: {error.message}</p>;
 
-  const client = new ApolloClient({
-  uri: "https://narutoql.up.railway.app/graphql",
-  cache: new InMemoryCache(),
-})
+
 
   return (
     <div>
-      <ApolloProvider client={client}>
       <form onSubmit={handleSubmit}  className=" mt-[9.77rem]">
         <div className="flex justify-center">
           
@@ -79,9 +76,6 @@ export default function Character() {
       {data?.characters ? <UserDetail user={data.characters.results[0]} /> : null}
       { (loading) && <p>Loading...</p>}
       { (error) && <p>Error: {error.message}</p>}
-    
-      <SignOutButton/>
-      </ApolloProvider>
     </div>
   );
 }

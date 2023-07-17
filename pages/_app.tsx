@@ -3,9 +3,9 @@ import type { AppProps } from "next/app"
 import {UserProvider} from "@/src/user"
 import { Inter as FontSans } from "@next/font/google"
 import { ThemeProvider } from "next-themes"
-import { AuthProvider } from "@/utils/AuthContext"
 import PrivateRoutes from "./privateRoutes"
 import "@/styles/globals.css"
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 
  
 
@@ -21,10 +21,10 @@ const fontSans = FontSans({
 export default function App({ Component, pageProps }: AppProps) {
   // const [supabase] = useState(() => createBrowserSupabaseClient())
   
-//   const client = new ApolloClient({
-//   uri: "https://narutoql.up.railway.app/graphql",
-//   cache: new InMemoryCache(),
-// })
+  const client = new ApolloClient({
+  uri: "https://narutoql.up.railway.app/graphql",
+  cache: new InMemoryCache(),
+})
 
 
   return (
@@ -34,6 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
                 --font-sans: ${fontSans.style.fontFamily};
               }
             }`}</style>
+            <ApolloProvider client = {client}>
             <UserProvider>
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                         
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
                                
                 </ThemeProvider>
             </UserProvider>
+            </ApolloProvider>
 
         </div>
         

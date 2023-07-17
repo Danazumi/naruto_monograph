@@ -78,7 +78,7 @@ body {
 
 /* Form Input Styling */
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea {
@@ -92,7 +92,7 @@ textarea {
     outline: none;
     font-size: 18px;
     text-shadow: none !important;
-}
+} */
 
 
 /* Button Styling */
