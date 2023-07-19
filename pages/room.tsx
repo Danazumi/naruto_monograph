@@ -123,6 +123,65 @@ const Room  = () => {
         <main className="container">
              <Logout />
             {/* create form here */}
+            {/* <form  onSubmit={getSubmit} id = "message--form">
+                <div>
+                    <textarea
+                    // required
+                    // maxLength={1000}
+                    placeholder = "Whats on yo mind"
+                    onChange={(e) => {setMezzBody(e.target.value)}}
+                    value = {mezzBody}
+                    className="text-white" > 
+                    </textarea>
+                </div>
+
+                <div className="send-btn--wrapper">
+                    <input type="submit" className="btn btn--secondary"  value = "Send" />
+                </div>
+
+
+            </form> */}
+
+            {/* messages container */}
+
+            <div className="p-8 border rounded- bg-gray-900">
+            <div> 
+                {messages.map( messages => (
+                    <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4">
+                        <div className="flex justify-between items-center">
+                            <p className="text-white">
+                                {/* {user?.firstName} */}
+                                {messages?.username ?(
+                                    <span>{messages.username}</span>
+                                ) : ( 
+                                    <span>Anonymous user</span>
+                                )}
+                                <small className="ml-[0.75rem] text-gray-400 text-[0.65rem]">{new Date(messages.$createdAt).toLocaleString()}</small>
+                            </p>
+
+
+                            {/* <small className="message-timestamp">{new Date(messages.$createdAt).toLocaleString()}</small> */}
+                            {messages.$permissions.includes(`delete(\"user:${user?.id}")`) &&
+                               (
+                                <Trash2 
+                                className = "text-white  "
+                                onClick={() => {deleteMessage(messages.$id)}}/>
+
+                               )
+                            }
+
+
+                            {/* <button onClick={() => {deleteMessage(messages.$id)}} 
+                            className="text-white"> X</button> */}
+                        </div>
+                        <div className="p-4 text-gray-100  bg-fuchsia-800 rounded-[20px] max-w-full  break-words w-fit">
+                            <span>{messages.body}</span>
+                        </div>
+                    </div>
+                )
+                    
+                )}
+            </div>
             <form  onSubmit={getSubmit} id = "message--form">
                 <div>
                     <textarea
@@ -141,51 +200,10 @@ const Room  = () => {
 
 
             </form>
-
-            {/* messages container */}
-
-            <div className="room--container">
-            <div> 
-                {messages.map( messages => (
-                    <div key = {messages.$id} className="message--wrapper">
-                        <div className="message--header">
-                            <p className="text-white">
-                                {/* {user?.firstName} */}
-                                {messages?.username ?(
-                                    <span>{messages.username}</span>
-                                ) : ( 
-                                    <span>Anonymous user</span>
-                                )}
-                                <small className="message-timestamp">{new Date(messages.$createdAt).toLocaleString()}</small>
-                            </p>
-
-
-                            {/* <small className="message-timestamp">{new Date(messages.$createdAt).toLocaleString()}</small> */}
-                            {messages.$permissions.includes(`delete(\"user:${user?.id}")`) &&
-                               (
-                                <Trash2 
-                                className = "text-white  "
-                                onClick={() => {deleteMessage(messages.$id)}}/>
-
-                               )
-                            }
-
-
-                            {/* <button onClick={() => {deleteMessage(messages.$id)}} 
-                            className="text-white"> X</button> */}
-                        </div>
-                        <div className="message--body">
-                            <span>{messages.body}</span>
-                        </div>
-                    </div>
-                )
-                    
-                )}
-            </div>
             </div> 
         </main>
 
-        
+        // "p-4 text-gray-300  bg-rose-600 rounded-[20px] max-w-full  break-words w-fit
     )
 }
 export default  Room

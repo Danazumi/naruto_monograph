@@ -78,7 +78,7 @@ body {
 
 /* Form Input Styling */
 
-/* input[type="text"],
+input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea {
@@ -92,7 +92,7 @@ textarea {
     outline: none;
     font-size: 18px;
     text-shadow: none !important;
-} */
+}
 
 
 /* Button Styling */
@@ -179,10 +179,10 @@ textarea {
 }
 
 .message--body {
-    padding: 0.5em 0;
+    padding: 0.5em ;
     color: var(--textColorSecondary);
     background-color: var(--themeColorMain);
-    padding: 1em;
+    padding: 1rem;
     border-radius: 20px;
     width: fit-content;
     max-width: 100%;
