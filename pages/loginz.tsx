@@ -20,11 +20,11 @@ export default function Loginz () {
                 )}
                 
                 {!user && (
-                  <>
+                  <div  className="flex flex-col items-center">
                 <Login/>
     
                 <SignUp/>
-                  </>
+                  </div>
                 )}
     
             </div>
@@ -33,34 +33,50 @@ export default function Loginz () {
 const Login  = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [errorword, setErrorWord] = useState("")
     const {login}  = useUser()
     
     const handleLogin = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
-        await login(email, password)
+        try {
+            await login(email, password)
+             setEmail("")
+             setPassword("")
+        } catch (error) {
+            setErrorWord("Invalid email or password")
+            console.error(errorword)
+            // console.error(error)
+        }
     }
     
 
     return (
         <form onSubmit  = {handleLogin} className="text-white rounded-md  w-[20rem] outline-none  max-sm:text-xs mt-12">
-             <div className="ml-8 gap-3 grid">
+             <div className="ml-8 gap-5 grid">
+                 <h1 className="scroll-m-20 text-xl font-semibold tracking-tight text-black text-center ">Login</h1>
+                
                 <Input 
                 type = "email"
                 value = {email}
                 onChange = {(e) => setEmail(e.target.value)}
                 className="text-black"
+                placeholder="Email address"
                 
                 />
-
+                  
                 <Input 
                     type = "password"
                     value = {password}
                     onChange = {(e) => setPassword(e.target.value)}
-                    className = "text-black "
+                    className = "text-black"
+                    placeholder="Password"
                 />
 
                 <Button type = "submit"
                 >Login</Button>
+                {errorword && <p className="text-black">Error: {errorword}</p>}
+
+            
              </div>
 
         </form>
@@ -95,12 +111,13 @@ const SignUp = () => {
     return (
         <form onSubmit  = {handleSignUp} className="text-white rounded-md   outline-none w-[20rem] max-sm:text-xs pt-20">
             <div className="ml-8 gap-3 grid">
-
+             <h1 className="scroll-m-20 text-xl font-semibold tracking-tight text-black text-center ">Signup</h1>
             <Input 
             type = "name"
             value = {name}
             onChange = {(e) => setName(e.target.value)}
             className = "text-black "
+            placeholder="Enter your name here"
             />
 
             <Input 
@@ -108,6 +125,7 @@ const SignUp = () => {
             value = {email}
             onChange = {(e) => setEmail(e.target.value)}
             className = "text-black "
+            placeholder="Email address"
             />
 
             <Input 
@@ -115,6 +133,7 @@ const SignUp = () => {
                 value = {password}
                 onChange = {(e) => setPassword(e.target.value)}
                 className = "text-black "
+                placeholder="Password"
             />
 
             <Button type = "submit"
