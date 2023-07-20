@@ -5,6 +5,7 @@ import UserDetail from '@/details/Details';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useLazyQuery, gql} from '@apollo/client';
+import "@/styles/typewriter.module.css"
 
 
 
@@ -52,7 +53,7 @@ export default function Character() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}  className=" mt-[9.77rem]">
+      <form onSubmit={handleSubmit}  className=" mt-[2.77rem]">
         <div className="flex justify-center">
           
         <Input

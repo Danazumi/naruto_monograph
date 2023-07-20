@@ -18,7 +18,7 @@ export  default function UserAuthForm({ className, ...props }: UserAuthFormProps
     setIsLoading(true)
 
     setTimeout(() => {
-      setIsLoading(false)
+      setIsLoading(false) 
     }, 3000)
   }
 

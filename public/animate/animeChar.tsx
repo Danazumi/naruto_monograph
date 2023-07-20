@@ -13,7 +13,8 @@ const Wrapper = (props: { children: React.ReactNode } ) => {
 const tagMap :  Record<string, keyof JSX.IntrinsicElements>  = {
   paragraph: "p",
   heading1: "h1",
-  heading2: "h2"
+  heading2: "h1",
+  heading3: "h1",
 };
 
 // AnimatedCharacters

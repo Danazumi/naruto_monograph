@@ -26,7 +26,7 @@
     --borderColor2: rgba(79, 86, 105, 1);
     --textColorMain: #fff;
     --textColorSecondary: rgb(226, 227, 232);
-    --themeColorMain: rgba(219, 26, 90, 1);
+    --themeColorMain: hsl(340, 79%, 48%);
     --themeColorSecondary: #386fd2;
 }
 
@@ -78,7 +78,7 @@ body {
 
 /* Form Input Styling */
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"],
 input[type="email"],
 textarea {
@@ -92,7 +92,7 @@ textarea {
     outline: none;
     font-size: 18px;
     text-shadow: none !important;
-}
+} */
 
 
 /* Button Styling */

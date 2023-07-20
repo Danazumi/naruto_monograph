@@ -15,10 +15,15 @@ export default function IndexPage() {
 
   const [replay, setReplay] = useState(true);
    const placeholderText = [
-    { type: "heading1", text: "Do you want to know more about the greatest anime of all time?" },
+    { type: "heading1", text: "naruto monograph" },
     {
       type: "heading2",
-      text: "You have definately come to the right place"
+      text: "Search for your favorite shinobis"
+    },
+
+    {
+      type: "heading3",
+      text: "Chat with  your fellow weebs"
     }
   ];
 
@@ -68,16 +73,16 @@ export default function IndexPage() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <motion.div className="text-xl font-extrabold leading-tight tracking-tighter sm:text-2xl md:text-4xl lg:text-5xl text-purple-700"
-
+      <section className="container grid items-center gap-6 pt-6 pb-8 md:py-10 pr-8">
+        <div className="  before:after:first: ">
+          <motion.div className=" font-extrabold tracking-tighter  mr-4 text-purple-800  text-3xl  max-md:text-2xl  max-sm:text-xl"
+          
             initial="hidden"
             // animate="visible"
             animate={replay ? "visible" : "hidden"}
             variants={container}
           >
-            <div className="container">
+            <div className=" pr-6 ">
               {placeholderText.map((item, index) => {
                 return <AnimatedCharacters {...item} key={index} />;
         })}
@@ -107,3 +112,6 @@ export default function IndexPage() {
 //              Do you want to know more about the greatest anime of all time?<br className="hidden sm:inline" />
 //              You have definately come to the right place
 //           </motion.h1>
+
+
+{/* <motion.div className="text-xl font-extrabold leading-tight tracking-tighter  sm:text-2xl md:text-4xl lg:text-5xl text-purple-700" */}
