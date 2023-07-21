@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react"
 import  client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from "@/src/appWriteConfig"
-import { Models , ID, Query, Role, Permission, AppwriteException} from "appwrite";
-import { Client } from "appwrite";
-import { Trash, Trash2, TrashIcon } from "lucide-react";
-import { NextPage } from "next";
+import { Models , ID, Query, Role, Permission, } from "appwrite";
+import {  Trash2  } from "lucide-react";
 import {useUser} from "@/src/user"
-import PrivateRoutes from "./privateRoutes";
-
-
-import { v4 as uuidv4 } from "uuid";
 
 
 
@@ -25,6 +19,11 @@ const Room  = () => {
     const [messages, setMessages] = useState<Models.Document[]>([])
     const [mezzBody, setMezzBody] = useState('')
     const {user} = useUser()
+    
+
+    
+
+    
     
 
    
