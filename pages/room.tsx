@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"
 import  client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from "@/src/appWriteConfig"
 import { Models , ID, Query, Role, Permission, } from "appwrite";
+import { Textarea } from "@/components/ui/textarea";
 import {  Trash2  } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {useUser} from "@/src/user"
+import PaperPlane from "@/public/images/paperPlane";
 
 
 
@@ -18,15 +21,9 @@ import {useUser} from "@/src/user"
 const Room  = () => {
     const [messages, setMessages] = useState<Models.Document[]>([])
     const [mezzBody, setMezzBody] = useState('')
+    const [mezz, setMezz] = useState('')
     const {user} = useUser()
-    
-
-    
-
-    
-    
-
-   
+ 
     
     useEffect(() => { 
         getMessages()
@@ -90,7 +87,7 @@ const Room  = () => {
         //Allows message to display below when it is sent
         // setMessages(prev => [response.payload, ...prev] 
         setMezzBody('')
-        
+         
     }
 
     const getMessages = async () => {
@@ -119,38 +116,19 @@ const Room  = () => {
         
    
 
-        <main className="container">
-             <Logout />
-            {/* create form here */}
-            {/* <form  onSubmit={getSubmit} id = "message--form">
-                <div>
-                    <textarea
-                    // required
-                    // maxLength={1000}
-                    placeholder = "Whats on yo mind"
-                    onChange={(e) => {setMezzBody(e.target.value)}}
-                    value = {mezzBody}
-                    className="text-white" > 
-                    </textarea>
-                </div>
-
-                <div className="send-btn--wrapper">
-                    <input type="submit" className="btn btn--secondary"  value = "Send" />
-                </div>
-
-
-            </form> */}
-
+        <main className="">
+             
+        
             {/* messages container */}
 
-            <div className="p-8 border rounded- bg-gray-900">
-            <div> 
+            <div className="p-8 border rounded- bg-gray-900  min-h-screen flex flex-col-reverse ">
+            <div className="mb-20"> 
                 {messages.map( messages => (
-                    <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4">
+                    <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4 ">
                         <div className="flex justify-between items-center">
                             <p className="text-white">
                                 {/* {user?.firstName} */}
-                                {messages?.username ?(
+                                {messages?.username ?   (
                                     <span>{messages.username}</span>
                                 ) : ( 
                                     <span>Anonymous user</span>
@@ -181,21 +159,26 @@ const Room  = () => {
                     
                 )}
             </div>
-            <form  onSubmit={getSubmit} id = "message--form">
-                <div>
-                    <textarea
+            <form  onSubmit={getSubmit} id = "message--form"  className="w-full bg-gray-900  fixed bottom-0  pb-[1rem]">
+                <div className="flex">
+                    <Textarea
                     // required
                     // maxLength={1000}
                     placeholder = "Whats on yo mind"
                     onChange={(e) => {setMezzBody(e.target.value)}}
                     value = {mezzBody}
-                    className="text-white" > 
-                    </textarea>
+                    className="text-black-100 w-[752px] px-4 h-[57px] py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-purple-400 pt-" > 
+                    </Textarea>
+                    <button type="submit" className="ml-2 w-[40px] h-[40px]  bg-purple-600 text-white rounded-lg -translate-x-14 mt-2">
+                    <PaperPlane/>
+                </button>
+
+                    {/* <div className="send-btn--wrapper ">
+                        <input type="submit" className="btn btn--secondary"  value = "Send" />
+                    </div> */}
+                    {/* <Logout /> */}
                 </div>
 
-                <div className="send-btn--wrapper">
-                    <input type="submit" className="btn btn--secondary"  value = "Send" />
-                </div>
 
 
             </form>
@@ -214,7 +197,7 @@ const Logout = () => {
         }
 
         return (
-            <button onClick = {handleLogout}>Logout</button>
+            <Button onClick = {handleLogout} className="bg-black mt-4">Logout</Button>
         )
         
     }

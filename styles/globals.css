@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 
+
 .custom-scroll-area {
     max-height: 520px;
     min-height: 256px;
@@ -47,10 +48,10 @@ body {
     color: var(--textColorMain);
 }
 
-.container {
+/* .container {
     max-width: 600px;
     margin: 20px auto;
-}
+} */
 
 /* Login & Register Pages */
 
