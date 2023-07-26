@@ -6,6 +6,7 @@ import {  Trash2  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {useUser} from "@/src/user"
 import PaperPlane from "@/public/images/paperPlane";
+import AscendingLayout from "@/public/descending";
 
 
 
@@ -70,7 +71,7 @@ const Room  = () => {
             
         }
 
-        // let permissions: string[] | undefined = [Permission.write(Role.user(String(payload.user_id )))]
+
         
         let permissions = [Permission.write(Role.user(String(user?.id)))]
 
@@ -85,7 +86,7 @@ const Room  = () => {
         
         // update messages array with response object
         //Allows message to display below when it is sent
-        // setMessages(prev => [response.payload, ...prev] 
+        // setMessages(prev => [response.payload, ...prev] )
         setMezzBody('')
          
     }
@@ -95,7 +96,7 @@ const Room  = () => {
             DATABASE_ID, 
             COLLECTION_ID_MESSAGES,
             [
-                Query.orderAsc("$createdAt")
+                Query.orderDesc("$createdAt")
             ])
         console.log("RESPONSE", response)
         setMessages(response.documents)
@@ -117,11 +118,12 @@ const Room  = () => {
    
 
         <main className="">
+            {/* div className="mb-20 " */}
              
-        
+                 
             {/* messages container */}
 
-            <div className="p-8 border rounded- bg-gray-900  min-h-screen flex flex-col-reverse ">
+            <div className="p-8 border rounded- bg-gray-900  min-h-screen  ">
             <div className="mb-20"> 
                 {messages.map( messages => (
                     <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4 ">
@@ -151,7 +153,7 @@ const Room  = () => {
                             {/* <button onClick={() => {deleteMessage(messages.$id)}} 
                             className="text-white"> X</button> */}
                         </div>
-                        <div className="p-4 text-gray-100  bg-fuchsia-800 rounded-[20px] max-w-full  break-words w-fit">
+                        <div className="p-4 text-gray-100  bg-fuchsia-800 rounded-[20px] max-w-full  break-words w-fit ">
                             <span>{messages.body}</span>
                         </div>
                     </div>
@@ -167,16 +169,16 @@ const Room  = () => {
                     placeholder = "Whats on yo mind"
                     onChange={(e) => {setMezzBody(e.target.value)}}
                     value = {mezzBody}
-                    className="text-black-100 w-[752px] px-4 h-[57px] py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-purple-400 pt-" > 
+                    className="text-black-100 w-[752px] px-4 h-[57px] py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring focus:ring-purple-400 max-[850px]:w-[652px] max-[750px]:w-[552px] max-[650px]:w-[452px]" > 
                     </Textarea>
-                    <button type="submit" className="ml-2 w-[40px] h-[40px]  bg-purple-600 text-white rounded-lg -translate-x-14 mt-2">
+                    <button type="submit" className="ml-2 w-[2.5rem] h-[2.5rem]  bg-purple-600 text-white rounded-lg -translate-x-14 mt-2">
                     <PaperPlane/>
                 </button>
 
                     {/* <div className="send-btn--wrapper ">
                         <input type="submit" className="btn btn--secondary"  value = "Send" />
                     </div> */}
-                    {/* <Logout /> */}
+                    <Logout />
                 </div>
 
 
