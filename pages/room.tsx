@@ -124,7 +124,8 @@ const Room  = () => {
             {/* messages container */}
 
             <div className="p-8 border rounded- bg-gray-900  min-h-screen  ">
-            <div className="mb-20"> 
+            <Logout />
+            <div className="mb-20 flex flex-col-reverse"> 
                 {messages.map( messages => (
                     <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4 ">
                         <div className="flex justify-between items-center">
@@ -178,7 +179,6 @@ const Room  = () => {
                     {/* <div className="send-btn--wrapper ">
                         <input type="submit" className="btn btn--secondary"  value = "Send" />
                     </div> */}
-                    <Logout />
                 </div>
 
 
