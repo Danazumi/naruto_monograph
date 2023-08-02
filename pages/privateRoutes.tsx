@@ -4,40 +4,61 @@ import {useUser} from "@/src/user"
 import Link from "next/link"
 import Room from './room'
 
-const PrivateRoutes  = ({children}: any) => {
+function PrivateRoutes<T>(Component: React.ComponentType<T>) {
+    return (props: T) => {
+
   const {loading, user} = useUser()
   const router = useRouter()
+  
   
   useEffect(() => {
     if (!loading && !user){
       router.push("/loginz")
     }
   }, [loading, user ,router])
-  if (loading) {
-    return <p>Loading...</p>
-  }
-  return <Link href = "/room" />
- 
+
+  // if (loading) {
+  //   return <p>Loading...</p>
+  // }
+  
+   return <>
+            <Component {...props!} />
+          </>
+    }
+  
 }
+export default PrivateRoutes;
 
-export default PrivateRoutes
+
+
+
+
+
+
+// const PrivateRoutes  = ({children}: any) => {
+//   const {loading, user} = useUser()
+//   const router = useRouter()
+  
+//   useEffect(() => {
+//     if (!loading && !user){
+//       router.push("/loginz")
+//     }
+//   }, [loading, user ,router])
+//   if (loading) {
+//     return <p>Loading...</p>
+//   }
+  
+//    return <Link href = "/room" />
+  
+// }
+
+
+// export default PrivateRoutes
 
 
 
 
  
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -65,5 +86,4 @@ export default PrivateRoutes
 // };
 
 // export default PrivateRoutes;
-
 

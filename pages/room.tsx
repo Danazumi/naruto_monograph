@@ -6,7 +6,8 @@ import {  Trash2  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {useUser} from "@/src/user"
 import PaperPlane from "@/public/images/paperPlane";
-import AscendingLayout from "@/public/descending";
+import PrivateRoutes from "./privateRoutes";
+import { NextPage } from "next";
 
 
 
@@ -19,13 +20,13 @@ import AscendingLayout from "@/public/descending";
 //   lastname: string]
 // }
 
-const Room  = () => {
+const Room : NextPage  = () => {
     const [messages, setMessages] = useState<Models.Document[]>([])
     const [mezzBody, setMezzBody] = useState('')
-    const [mezz, setMezz] = useState('')
     const {user} = useUser()
- 
+   
     
+
     useEffect(() => { 
         getMessages()
 
@@ -114,10 +115,9 @@ const Room  = () => {
 
     }
     return (
-        
-   
 
-        <main className="">
+        <main className="" >
+          
             {/* div className="mb-20 " */}
              
                  
@@ -138,18 +138,14 @@ const Room  = () => {
                                 )}
                                 <small className="ml-[0.75rem] text-gray-400 text-[0.65rem]">{new Date(messages.$createdAt).toLocaleString()}</small>
                             </p>
-
-
                             {/* <small className="message-timestamp">{new Date(messages.$createdAt).toLocaleString()}</small> */}
                             {messages.$permissions.includes(`delete(\"user:${user?.id}")`) &&
                                (
                                 <Trash2 
                                 className = "text-white  "
                                 onClick={() => {deleteMessage(messages.$id)}}/>
-
                                )
                             }
-
 
                             {/* <button onClick={() => {deleteMessage(messages.$id)}} 
                             className="text-white"> X</button> */}
@@ -175,22 +171,15 @@ const Room  = () => {
                     <button type="submit" className="ml-2 w-[2.5rem] h-[2.5rem]  bg-purple-600 text-white rounded-lg -translate-x-14 mt-2">
                     <PaperPlane/>
                 </button>
-
-                    {/* <div className="send-btn--wrapper ">
-                        <input type="submit" className="btn btn--secondary"  value = "Send" />
-                    </div> */}
                 </div>
-
-
-
             </form>
             </div> 
-        </main>
 
-        // "p-4 text-gray-300  bg-rose-600 rounded-[20px] max-w-full  break-words w-fit
+        </main>
+     
     )
 }
-export default  Room
+export default  PrivateRoutes(Room)
 
 const Logout = () => {
         const {logout} = useUser()
