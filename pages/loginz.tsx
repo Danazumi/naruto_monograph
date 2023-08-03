@@ -4,6 +4,8 @@ import Link from "next/link"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Room from "./room"
+import { setCookie } from 'cookies-next';
+import PrivateRoutes from "@/protected/privateRoutes";
 
 
 
@@ -39,6 +41,8 @@ const Login  = () => {
     
     const handleLogin = async (e: { preventDefault: () => void }) => {
         e.preventDefault()
+        setCookie('logged', 'true')
+        
         try {
             await login(email, password)
              setEmail("")

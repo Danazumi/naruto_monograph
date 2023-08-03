@@ -6,8 +6,8 @@ import {  Trash2  } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {useUser} from "@/src/user"
 import PaperPlane from "@/public/images/paperPlane";
-import PrivateRoutes from "./privateRoutes";
-import { NextPage } from "next";
+import { useRouter } from 'next/router'
+import { deleteCookie } from 'cookies-next';
 
 
 
@@ -20,14 +20,20 @@ import { NextPage } from "next";
 //   lastname: string]
 // }
 
-const Room : NextPage  = () => {
+const Room = () => {
     const [messages, setMessages] = useState<Models.Document[]>([])
     const [mezzBody, setMezzBody] = useState('')
-    const {user} = useUser()
+    const {loading, user} = useUser()
+    const router = useRouter()
    
+  
     
 
     useEffect(() => { 
+           if (!loading && !user){
+            router.push("/loginz")
+            }
+
         getMessages()
 
         //listen for events with the message collection
@@ -57,7 +63,7 @@ const Room : NextPage  = () => {
         unsub()
     }
  
-    }, [])
+    }, [loading, user ,router])
 
 
     // create a message 
@@ -179,11 +185,11 @@ const Room : NextPage  = () => {
      
     )
 }
-export default  PrivateRoutes(Room)
-
+export default  Room
 const Logout = () => {
         const {logout} = useUser()
         const handleLogout = async () => {
+            deleteCookie("logged");
             await logout()
         }
 

@@ -3,7 +3,7 @@ import type { AppProps } from "next/app"
 import {UserProvider} from "@/src/user"
 import { Inter as FontSans } from "@next/font/google"
 import { ThemeProvider } from "next-themes"
-import PrivateRoutes from "./privateRoutes"
+import PrivateRoutes from "../protected/privateRoutes"
 import "@/styles/globals.css"
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 
@@ -19,7 +19,8 @@ const fontSans = FontSans({
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  // const [supabase] = useState(() => createBrowserSupabaseClient())
+  
+  
   
   const client = new ApolloClient({
   uri: "https://narutoql.up.railway.app/graphql",

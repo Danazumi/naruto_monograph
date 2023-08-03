@@ -51,6 +51,7 @@
     "appwrite": "^11.0.0",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
+    "cookies-next": "^2.1.2",
     "css-loader": "^6.8.1",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.12.16",
