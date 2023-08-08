@@ -109,6 +109,7 @@ const SignUp = () => {
     
     const handleSignUp= async (e: { preventDefault: () => void }) => {
         e.preventDefault()
+        setCookie('logged', 'true')
         await signup(name,email, password)
     }
     

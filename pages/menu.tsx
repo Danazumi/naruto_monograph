@@ -79,7 +79,7 @@ export default function Menu() {
             <MenubarItem>Manga</MenubarItem>
             <MenubarItem>History</MenubarItem>
             </MenubarContent>
-        </MenubarMenu>
+    </MenubarMenu>
         <MenubarMenu>
             <MenubarTrigger>chat</MenubarTrigger>
             <MenubarContent>

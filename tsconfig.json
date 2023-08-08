@@ -20,6 +20,6 @@
       "@/*": ["./*"]
     }
   }, 
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "public/images/HashTag.jsx", "pages/sign_in.js", "components/account.js", "pages/sign_in.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "public/images/HashTag.jsx", "pages/sign_in.js", "components/account.js", "pages/sign_in.js", "middleware.js"],
   "exclude": ["node_modules"]
 }

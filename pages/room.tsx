@@ -8,6 +8,7 @@ import {useUser} from "@/src/user"
 import PaperPlane from "@/public/images/paperPlane";
 import { useRouter } from 'next/router'
 import { deleteCookie } from 'cookies-next';
+import { useRef } from "react";
 
 
 
@@ -25,6 +26,7 @@ const Room = () => {
     const [mezzBody, setMezzBody] = useState('')
     const {loading, user} = useUser()
     const router = useRouter()
+    const messageRef  = useRef(null)
    
   
     
@@ -64,6 +66,12 @@ const Room = () => {
     }
  
     }, [loading, user ,router])
+
+
+    // useEffect(() => {
+    //     messageRef.messages?.scrollIntoView()
+
+    // }, [messages])
 
 
     // create a message 
@@ -131,7 +139,7 @@ const Room = () => {
 
             <div className="p-8 border rounded- bg-gray-900  min-h-screen  ">
             <Logout />
-            <div className="mb-20 flex flex-col-reverse"> 
+            <div className="mb-20 flex flex-col-reverse "> 
                 {messages.map( messages => (
                     <div key = {messages.$id} className="flex flex-wrap flex-col gap-2 m-4 ">
                         <div className="flex justify-between items-center">
@@ -163,6 +171,9 @@ const Room = () => {
                 )
                     
                 )}
+                
+                <div  ref = {messageRef} />
+
             </div>
             <form  onSubmit={getSubmit} id = "message--form"  className="w-full bg-gray-900  fixed bottom-0  pb-[1rem]">
                 <div className="flex">

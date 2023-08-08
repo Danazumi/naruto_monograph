@@ -10,7 +10,11 @@ const PrivateRoutes  = ({children}: any) => {
   const {loading, user} = useUser()
   const router = useRouter()
   
-  useEffect(() => 
+  useEffect(() => {
+    if (!loading && !user){
+      router.replace("/loginz")
+    }
+  }, [loading, user ,router])
   if (loading) {
     return <p>Loading...</p>
   }

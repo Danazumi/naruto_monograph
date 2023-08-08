@@ -12,15 +12,7 @@ export function middleware(request: NextRequest) {
             return NextResponse.rewrite(new URL('/loginz', request.url))
         }
     } 
-    // else {
-    //     return NextResponse.rewrite(new URL('/loginz', request.url))
-    // }
-
-//   if (request.nextUrl.pathname.startsWith('/loginz')) {
-//     return NextResponse.rewrite(new URL('/about-2', request.url))
-//   }
- 
-  
+   
 }
 
 
