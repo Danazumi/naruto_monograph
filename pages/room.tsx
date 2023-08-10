@@ -26,7 +26,7 @@ const Room = () => {
     const [mezzBody, setMezzBody] = useState('')
     const {loading, user} = useUser()
     const router = useRouter()
-    const messageRef  = useRef(null)
+     const messageRef = useRef<HTMLDivElement>(null);
    
   
     
@@ -68,11 +68,7 @@ const Room = () => {
     }, [loading, user ,router])
 
 
-    // useEffect(() => {
-    //     messageRef.messages?.scrollIntoView()
-
-    // }, [messages])
-
+   
 
     // create a message 
     const getSubmit = async (e: any) => {
@@ -106,6 +102,15 @@ const Room = () => {
          
     }
 
+
+    
+
+     useEffect(() => {
+        messageRef.current?.scrollIntoView()
+
+    }, [messages])
+
+
     const getMessages = async () => {
         const response =  await databases.listDocuments(
             DATABASE_ID, 
@@ -119,6 +124,7 @@ const Room = () => {
     
     
     }
+
 
     //document  ==  message we want to deletex
     const deleteMessage = async (message_id: any) => {
@@ -172,9 +178,9 @@ const Room = () => {
                     
                 )}
                 
-                <div  ref = {messageRef} />
-
             </div>
+                <div  ref = {messageRef} />
+                
             <form  onSubmit={getSubmit} id = "message--form"  className="w-full bg-gray-900  fixed bottom-0  pb-[1rem]">
                 <div className="flex">
                     <Textarea
