@@ -1,4 +1,4 @@
- import { Client, Databases, Account } from 'appwrite';
+ import { Client, Databases, Account, Models } from 'appwrite';
 
 export const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID  as string
 export const DATABASE_ID = process.env.NEXT_PUBLIC_DATABASE_ID as string
@@ -17,8 +17,24 @@ client
 
  export const databases = new Databases(client);
 
-export default client
-export {account}
+// export default client
+// export {account}
+
+const appwriteService = {
+    client,
+    account,
+    databases,
+    getCurrentUser: async (): Promise<Models.User<Models.Preferences> | null> => {
+        try {
+            return await account.get();
+        } catch (error) {
+            console.error('Error fetching current user:', error);
+            return null;
+        }
+    }
+};
+
+export default appwriteService;
 
 
             

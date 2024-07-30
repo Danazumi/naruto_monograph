@@ -1,6 +1,11 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,9 +22,25 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/types/*": ["components/types/*"],
     }
-  }, 
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "public/images/HashTag.jsx", "pages/sign_in.js", "components/account.js", "pages/sign_in.js", "middleware.js"],
-  "exclude": ["node_modules"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "public/images/HashTag.jsx",
+    "pages/sign_in.js",
+    "components/account.js",
+    "pages/sign_in.js",
+    "middleware.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "types": ["node", "body-parser"],
+  "typeRoots": ["./node_modules/@types", "./types"]
 }

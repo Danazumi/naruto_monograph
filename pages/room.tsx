@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import  client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from "@/src/appWriteConfig"
+import   appwriteService, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from "@/src/appWriteConfig"
 import { Models , ID, Query, Role, Permission, } from "appwrite";
 import { Textarea } from "@/components/ui/textarea";
 import {  Trash2  } from "lucide-react";
@@ -9,6 +9,9 @@ import PaperPlane from "@/public/images/paperPlane";
 import { useRouter } from 'next/router'
 import { deleteCookie } from 'cookies-next';
 import { useRef } from "react";
+
+// import  client, { databases, DATABASE_ID, COLLECTION_ID_MESSAGES } from "@/src/appWriteConfig"
+
 
 
 
@@ -41,7 +44,7 @@ const Room = () => {
         //listen for events with the message collection
         //set unsub to thr retrun val of sub then call unsub
 
-        const unsub = client.subscribe(`databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES }.documents`,  (response: any) => {
+        const unsub = appwriteService.client.subscribe(`databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES }.documents`,  (response: any) => {
         // Callback will be executed on changes for documents A and all files.
         
         //Add condition that listens 2 events
@@ -103,12 +106,16 @@ const Room = () => {
     }
 
 
-    
+    useEffect(() => {
+        if (messageRef.current) {
+            messageRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
 
-     useEffect(() => {
-        messageRef.current?.scrollIntoView()
+    //  useEffect(() => {
+    //     messageRef.current?.scrollIntoView()
 
-    }, [messages])
+    // }, [messages])
 
 
     const getMessages = async () => {
@@ -180,7 +187,7 @@ const Room = () => {
                 
             </div>
                 <div  ref = {messageRef} />
-                
+
             <form  onSubmit={getSubmit} id = "message--form"  className="w-full bg-gray-900  fixed bottom-0  pb-[1rem]">
                 <div className="flex">
                     <Textarea

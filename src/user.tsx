@@ -1,5 +1,6 @@
 import React, {createContext, useState, useEffect, useContext} from "react"
-import {account, PROJECT_ID } from "./appWriteConfig"
+import {PROJECT_ID } from "./appWriteConfig"
+import appwriteService from "./appWriteConfig";
 import { ID } from "appwrite";
 
 export interface UserState {
@@ -30,7 +31,7 @@ export const UserProvider = ({children}:{children :any}) => {
     useEffect(() =>{
         const checkUser = async () => {
             try {
-                const {$id,email, name} = await account.get()
+                const {$id,email, name} = await appwriteService.account.get()
                 setUser({ id: $id, email, name})
             } catch (error) {
                 setUser(null)
@@ -43,8 +44,8 @@ export const UserProvider = ({children}:{children :any}) => {
 
     const login = async (email:string, password :string) => {
         try{
-            await account.createEmailSession(email, password)
-            const {$id, name} = await account.get()
+            await appwriteService.account.createEmailSession(email, password)
+            const {$id, name} = await appwriteService.account.get()
             setUser({ id: $id, email, name})
         } catch (error) {
                 console.error(error)
@@ -53,7 +54,7 @@ export const UserProvider = ({children}:{children :any}) => {
 
     const logout = async () => {
         try {
-            await account.deleteSession("current")
+            await appwriteService.account.deleteSession("current")
             setUser(null)
         } catch (error) {
             console.error(error)
@@ -61,9 +62,9 @@ export const UserProvider = ({children}:{children :any}) => {
     }
     const signup =  async (name: string, email: string, password: string) => {
         try{ 
-            await account.create(ID.unique(), email, password, name )
-            await account.createEmailSession(email, password)
-            const {$id, name: userName} = await account.get() 
+            await appwriteService.account.create(ID.unique(), email, password, name )
+            await appwriteService.account.createEmailSession(email, password)
+            const {$id, name: userName} = await appwriteService.account.get() 
             setUser({ id: $id, email, name })
             } catch (error) {
                     console.error(error)
